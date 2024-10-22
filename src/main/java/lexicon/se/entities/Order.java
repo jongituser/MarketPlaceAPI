@@ -10,6 +10,7 @@ import lombok.*;
 @Builder
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
