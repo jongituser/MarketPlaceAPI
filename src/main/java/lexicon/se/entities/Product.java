@@ -17,18 +17,18 @@ public class Product {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column
     private String name;
 
-    @Column (nullable = false)
+    @Column
     private String description;
 
-    @Column (nullable = false)
+    @Column
     private String price;
 
-    @Column (nullable = false)
+    @Column
     private String category;
 
-    @Column (nullable = false)
+    @Column
     private String stock;
 }

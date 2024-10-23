@@ -17,18 +17,18 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column
     private String buyerId;
 
-    @Column(nullable = false)
+    @Column
     private String totalAmount;
 
-    @Column(nullable = false)
+    @Column
     private String orderStatus;
 
-    @Column(nullable = false)
+    @Column
     private String paymentMethod;
 
-    @Column(nullable = false)
+    @Column
     private String orderDate;
 }

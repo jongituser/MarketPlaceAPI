@@ -9,26 +9,19 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 
-
 @Entity
-public class User {
+public class Advertisement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
-    private String name;
+    private String title;
 
     @Column
-    private String email;
+    private String description;
 
     @Column
-    private String password;
-
-    @Column
-    private String role;
-
-    @Column
-    private String contactInfo;
+    private String expirationDate;
 }
