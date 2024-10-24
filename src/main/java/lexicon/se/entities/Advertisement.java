@@ -24,4 +24,8 @@ public class Advertisement {
 
     @Column
     private String expirationDate;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false) // This is the foreign key column in the advertisement table
+    private User user;
 }

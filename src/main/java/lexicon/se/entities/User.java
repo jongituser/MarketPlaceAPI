@@ -3,6 +3,8 @@ package lexicon.se.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -31,4 +33,7 @@ public class User {
 
     @Column
     private String contactInfo;
+
+    @OneToMany(mappedBy = "user")
+    private List<Advertisement> advertisements;
 }
