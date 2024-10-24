@@ -3,6 +3,8 @@ package lexicon.se.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,9 +25,9 @@ public class Advertisement {
     private String description;
 
     @Column
-    private String expirationDate;
+    private LocalDate expirationDate;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false) // This is the foreign key column in the advertisement table
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 }

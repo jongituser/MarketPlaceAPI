@@ -8,11 +8,12 @@ import lexicon.se.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AdvertisementService {
+public class  AdvertisementService {
 
     @Autowired
     private UserRepository userRepository;
@@ -20,18 +21,18 @@ public class AdvertisementService {
     @Autowired
     private AdvertisementRepository advertisementRepository;
 
-    public Advertisement createAdvertisementForUser(Integer userId, String title, String description, String expirationDate) {
-        // Find the user by ID
+    public Advertisement createAdvertisementForUser(Integer userId, String title, String description, LocalDate expirationDate) {
+
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        // Create a new advertisement
+
         Advertisement advertisement = new Advertisement();
         advertisement.setTitle(title);
         advertisement.setDescription(description);
         advertisement.setExpirationDate(expirationDate);
-        advertisement.setUser(user);  // Associate ad with the user
+        advertisement.setUser(user);
 
-        // Save and return the advertisement
+
         return advertisementRepository.save(advertisement);
 
     }
@@ -41,9 +42,9 @@ public class AdvertisementService {
 
         if (userOpt.isPresent()) {
             User user = userOpt.get();
-            // Compare the plain-text password (since we're skipping hashing for now)
+
             if (user.getPassword().equals(loginDTO.getPassword())) {
-                // Fetch the advertisements created by this user
+
                 return advertisementRepository.findByUser(user);
             } else {
                 throw new IllegalArgumentException("Invalid password");
@@ -52,4 +53,5 @@ public class AdvertisementService {
             throw new IllegalArgumentException("User not found");
         }
     }
-}
+
+    }
