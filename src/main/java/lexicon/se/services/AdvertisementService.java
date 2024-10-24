@@ -54,4 +54,9 @@ public class  AdvertisementService {
         }
     }
 
+    public List<Advertisement> getActiveAdvertisements(String title, String description) {
+        LocalDate today = LocalDate.now();
+        return advertisementRepository.findFilteredAdvertisements(today, title, description);
+    }
+
     }

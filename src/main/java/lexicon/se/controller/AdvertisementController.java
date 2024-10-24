@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -73,5 +74,14 @@ public class AdvertisementController {
         Advertisement ad = advertisementService.createAdvertisementForUser(user.getId(), title, description, expirationDate);
 
         return new ResponseEntity<>(ad, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<Advertisement>> listActiveAdvertisements(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String description) {
+
+        List<Advertisement> activeAds = advertisementService.getActiveAdvertisements(title, description);
+        return new ResponseEntity<>(activeAds, HttpStatus.OK);
     }
 }
